@@ -1,10 +1,13 @@
-# state-delegator
+State Delegator
+===============
 
-`state-delegator` - is set of classes that helps you to manage screen state.
+![Logo](logo/logo.png)
+
+Collection of classes that helps you to manage a screen state.
 
 ### Example
 
-Changing the screen state, you always have to show/hide certain views:
+When changing a screen state you always have to show or hide the certain views:
 
 ```kotlin
 when (state) {
@@ -26,8 +29,7 @@ when (state) {
 }
 ```
 
-When expanding functionality, you have to fix boilerplate code every time.
-To reduce a boilerplate code we use `LoadingStateDelegate` from `state-delegator`:
+To reduce a boilerplate code we use `LoadingStateDelegate` class:
 
 ```kotlin
 val screenState = LoadingStateDelegate(content_view, loading_view, stub_view)
@@ -39,11 +41,11 @@ when (state) {
 }
 ```
 
-With `LoadingStateDelegate` the source code becomes cleaner and much more compact.
+With `LoadingStateDelegate` source code becomes cleaner and more compact.
 
-#### LoadingStateDelegate
+### LoadingStateDelegate
 
-To control the visibility of the content, loading, zero-screen, `LoadingStateDelegate` must be initialized with the appropriate views:
+To control visibility of content, loading and zero-screen, `LoadingStateDelegate` must be initialized with the appropriate views:
 
 ```kotlin
 class LoadingStateDelegate(
@@ -53,11 +55,9 @@ class LoadingStateDelegate(
 ): StateDelegate
 ```
 
-where `contentView` is the content view,` loadingView` is the progress view, `stubView` is the zero-screen view.
+To show loading status you must call `showLoading()` method, to show content view  — `showContent()` and to show zero-screen view — `showStub(stubState: StubState? = null)`, where `StubState` — class that initializes zero-screen, by default you can omit it.
 
-To show the loading status, you must call the `showLoading()` method, to show the content view  — `showContent()`, to show the zero-screen view — `showStub(stubState: StubState? = null)`, where `StubState` — class that helps you to initialize the zero-screen, by default you can omit it.
-
-Also you can use constructor with an array of `View`:
+Also you can use the constructor with an array of `View`:
 
 ```kotlin
 class LoadingStateDelegate(
@@ -67,9 +67,9 @@ class LoadingStateDelegate(
 ): StateDelegate
 ```
 
-You should use the constructor above, when `View`, included in` contentView`, `loadingView` or in` stubView` arrays, don't have a common parent `View` or they are scattered around the `layout`. If you use `constraint-layout` it is recommended to use in this case the class `Group` and the standard constructor `LoadingStateDelegate`.
+You should use the constructor above in case of views are scattered around the `layout`. If you use `constraint-layout` it is recommended to use `Group` class and the standard constructor `LoadingStateDelegate`.
 
-When working with `LoadingStateDelegate` in Fragment/ Activity, don't use the `by lazy`:
+When working with `LoadingStateDelegate` in Fragment/Activity don't use the `by lazy`:
 
 ```kotlin
 class LoadingActivity  : AppCompatActivity() {
@@ -84,11 +84,11 @@ class LoadingActivity  : AppCompatActivity() {
 ...
 ```
 
-This can lead to errors. If we return to `Activity` from back stack, the `View` is recreated in this case, but the delegate who already refers to the old` View` is not. Use `lateinit` and re-create the delegate every time in the component lifecycle methods.
+This can lead to errors. If `Activity` returns from the back stack, `View` is recreated, but the delegate is not. It refers to the old `View` reference. Use `lateinit` and re-create delegate every time in the component lifecycle methods.
 
-#### StateDelegate
+### StateDelegate
 
-If you have complicated states of screen, you can use `StateDelegate`
+If you have a complicated state of screen, you can use `StateDelegate`.
 With `StateDelegate` you can specify as many states as you like:
 
 ```kotlin
@@ -111,8 +111,8 @@ data class State<T>(
         val strategy: StateChangeStrategy<T> = ShowOnEnterGoneOnExitStrategy()
 ) where T : Enum<T>
 ```
-where `name` is a tag of state; `viewsGroup` is a set of` View`, defining how the screen state will look like; `strategy` - business logic of a state, by default`strategy = ShowOnEnterGoneOnExitStrategy` - strategy that
-changes the `View` visibility following way: if we switched to the state with the`name` tag, new visibility is `View.VISIBLE` to each` View` from `viewsGroup`, if we change the state to another - new visibility is `View.GONE`.
+where `name` is a tag of state; `viewsGroup` is a set of `View`, defining how a screen state looks like; `strategy` - business logic of a state screen, by default `strategy = ShowOnEnterGoneOnExitStrategy` - strategy that
+changes `View` visibility the following way: if we switch to the state with the `name` tag, new visibility is `View.VISIBLE` to each `View` from `viewsGroup`. If we change the state to another, new visibility is `View.GONE`.
 
 You can specify your strategies in `State` with overriding the interface `StateChangeStrategy`:
 
@@ -125,13 +125,15 @@ interface StateChangeStrategy<T : Enum<T>> {
 }
 ```
 
-**Q**: Why are `onStateEnter()` and `onStateExit()` needed?
-**A**: These are the default methods in the `StateChangeStrategy` interface, overriding them is optional. You can use this methods, if you need to start/stop animation at changing state.
+**Q**: In which cases `onStateEnter()` and `onStateExit()` are used?
 
-**Q**: Why is the `prevState` and `newState` passed in `onStateEnter()` and `onStateExit()`?
-**A**: You can use this, if it is necessary to process transition between two states.
+**A**: These are the default methods in `StateChangeStrategy` interface, overriding them is optional. You can use these methods, if you need to start/stop animation.
 
-The `StateDelegate` constructor has the initial state `initialState`:
+**Q**: In which cases `prevState` and `newState` are used?
+
+**A**: You can use these, if it is necessary to process transition between two states.
+
+The `StateDelegate` constructor has the initial state:
 
 ```kotlin
 open class StateDelegate<T>(
@@ -140,11 +142,9 @@ open class StateDelegate<T>(
 ) where T : Enum<T>
 ```
 
-By default, all `View` are assigned the visibility `View.GONE` when a `StateDelegate` is created.
+By default, the visibility `View.GONE` is assigned to all `View`.
 
-#### How to add?
-
-You need add this to your gradle build-script:
+### Download
 
 ```groovy
 dependencies {
@@ -156,10 +156,34 @@ dependencies {
 
 And that's all! :-)
 
-#### Sources
+### Source code
 
-The project consists of two modules - `state-delegator` and` sample`.
+The project has two models - `state-delegator` and `sample`.
 
-`state-delegator` - library codebase.
+`state-delegator` - the library codebase.
 
-`sample` is an example of using state-delegator.
+`sample` is an example of usage `state-delegator`.
+
+### License
+
+    MIT License
+
+    Copyright (c) 2018 Redmadrobot
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
