@@ -1,0 +1,20 @@
+private getVersionCodeFromProperties() {
+    Properties versionProperties = loadVersionProperties()
+    return (versionProperties["version_code"] ?: "0").toString().toInteger()
+}
+
+private getVersionNameFromProperties() {
+    Properties versionProperties = loadVersionProperties()
+    return versionProperties["version_name"]
+}
+
+private Properties loadVersionProperties() {
+    Properties versionProperties = new Properties()
+    versionProperties.load(project.rootProject.file('version.properties').newDataInputStream())
+    return versionProperties
+}
+
+ext {
+    versionCodeFromProperties = getVersionCodeFromProperties()
+    versionNameFromProperties = getVersionNameFromProperties()
+}

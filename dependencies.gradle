@@ -1,0 +1,44 @@
+ext {
+    // Android
+    androidCompileSdkVersion = 28
+    androidBuildToolsVersion = '28.0.3'
+
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 28
+
+    // Google
+    supportLibraryVersion = '25.3.1'
+
+    // View
+    constraintLayoutVersion = '1.0.2'
+
+    // Test
+    jUnitVersion = '4.12'
+    roboelectric = '3.1.1'
+
+    // Sample Delegator
+    sampleDelegatorVersion = '1.5'
+
+    libDependencies = [
+            // Kotlin
+            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    ]
+
+    sampleDependencies = [
+            // Kotlin
+            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+
+            // Android
+            appCompat         : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            supportAnnotations: "com.android.support:support-annotations:$supportLibraryVersion",
+
+
+            // Library
+            sampleDelegator   : "com.redmadrobot:statedelegator:$sampleDelegatorVersion"
+    ]
+
+    testDependencies = [
+            junit   : "junit:junit:$jUnitVersion",
+            roboelectric   : "org.robolectric:robolectric:$roboelectric",
+    ]
+}

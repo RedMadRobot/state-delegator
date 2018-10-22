@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def mainConfig = rootProject.ext
+
+    compileSdkVersion mainConfig.androidCompileSdkVersion
+    buildToolsVersion mainConfig.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.redmadrobot"
+
+        minSdkVersion mainConfig.androidMinSdkVersion
+        targetSdkVersion mainConfig.androidTargetSdkVersion
+
+        versionCode mainConfig.versionCodeFromProperties
+        versionName mainConfig.versionNameFromProperties
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven {
+        credentials {
+            username 'android-consumer'
+            password 'FBSLLD4qzMRrdvpQ'
+        }
+        url 'https://nexus.redmadrobot.com/repository/android/'
+    }
+}
+
+dependencies {
+    def deps = rootProject.ext.sampleDependencies
+    implementation project(':state-delegator')
+
+    implementation deps.kotlin
+    implementation deps.appCompat
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}
