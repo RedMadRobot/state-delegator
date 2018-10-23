@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+android {
+    def mainConfig = rootProject.ext
+
+    compileSdkVersion mainConfig.androidCompileSdkVersion
+    buildToolsVersion mainConfig.androidBuildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion mainConfig.androidMinSdkVersion
+        targetSdkVersion mainConfig.androidTargetSdkVersion
+
+        versionCode mainConfig.versionCodeFromProperties
+        versionName mainConfig.versionNameFromProperties
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def deps = rootProject.ext.libDependencies
+    def testDeps = rootProject.ext.testDependencies
+
+    implementation deps.kotlin
+
+    testImplementation testDeps.junit
+    testImplementation testDeps.roboelectric
+}
