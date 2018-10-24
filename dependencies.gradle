@@ -34,7 +34,7 @@ ext {
 
 
             // Library
-            sampleDelegator   : "com.redmadrobot:statedelegator:$sampleDelegatorVersion"
+            sampleDelegator   : "com.redmadrobot:state-delegator:$sampleDelegatorVersion"
     ]
 
     testDependencies = [

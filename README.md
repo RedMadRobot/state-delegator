@@ -55,7 +55,7 @@ class LoadingStateDelegate(
 ): StateDelegate
 ```
 
-To show loading status you must call `showLoading()` method, to show content view  — `showContent()` and to show zero-screen view — `showStub(stubState: StubState? = null)`, where `StubState` — class that initializes zero-screen, by default you can omit it.
+To show loading status you must call `showLoading()` method, to show content view  - `showContent()` and to show zero-screen view - `showStub(stubState: StubState? = null)`, where `StubState` - class that initializes zero-screen, by default you can omit it.
 
 Also you can use the constructor with an array of `View`:
 
@@ -150,7 +150,7 @@ By default, the visibility `View.GONE` is assigned to all `View`.
 dependencies {
     ...
 
-    implementation "com.redmadrobot:statedelegator:1.5"
+    implementation "com.redmadrobot:state-delegator:1.5"
 }
 ```
 
