@@ -3,6 +3,8 @@ State Delegator
 
 ![Logo](logo/logo.png)
 
+[ ![Download](https://api.bintray.com/packages/redmadrobot-opensource/android/state-delegator/images/download.svg) ](https://bintray.com/redmadrobot-opensource/android/state-delegator/_latestVersion) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+
 Collection of classes that helps you to manage a screen state.
 
 ### Example
@@ -146,7 +148,18 @@ By default, the visibility `View.GONE` is assigned to all `View`.
 
 ### Download
 
-```groovy
+To get started using `state-delegator` is to add it as a gradle dependency. You need to make sure you have the JCenter repository included in the build.gradle file in the root of your project:
+
+```gradle
+repositories {
+    jcenter()
+}
+```
+
+Next add a dependency in the `build.gradle` file of your app module. The
+following will add a dependency to the library:
+
+```gradle
 dependencies {
     ...
 
