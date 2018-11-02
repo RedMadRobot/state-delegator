@@ -118,7 +118,6 @@ class LoadingStateDelegateTest : Assert() {
         contentViewLayout.forEach { assertThat(it.visibility, equalTo(View.GONE)) }
         loadingViewLayout.forEach { assertThat(it.visibility, equalTo(View.GONE)) }
         stubViewLayout.forEach { assertThat(it.visibility, equalTo(View.VISIBLE)) }
-
     }
 
     private fun hideAll() {
