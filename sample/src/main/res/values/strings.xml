@@ -9,6 +9,13 @@
     <string name="main_open_screen_state_activity">Open ScreenState Activity</string>
     <string name="main_open_action_activity">Open Action Activity</string>
 
+    <!-- Loading -->
+    <string name="loading_show_loading">Show Loading</string>
+    <string name="loading_show_content">Show Content</string>
+    <string name="loading_show_stub">Show Stub</string>
+
+    <string name="loading_content">Content</string>
+
     <!-- Action -->
     <string name="action_submit_btn">Submit Action</string>
 </resources>
