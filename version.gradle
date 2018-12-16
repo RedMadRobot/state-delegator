@@ -1,9 +1,9 @@
-private getVersionCodeFromProperties() {
+def getVersionCodeFromProperties() {
     Properties versionProperties = loadVersionProperties()
     return (versionProperties["version_code"] ?: "0").toString().toInteger()
 }
 
-private getVersionNameFromProperties() {
+def getVersionNameFromProperties() {
     Properties versionProperties = loadVersionProperties()
     return versionProperties["version_name"]
 }
@@ -14,7 +14,7 @@ private Properties loadVersionProperties() {
     return versionProperties
 }
 
-ext {
-    versionCodeFromProperties = getVersionCodeFromProperties()
-    versionNameFromProperties = getVersionNameFromProperties()
+ext{
+    getVersionCodeFromProperties = this.&getVersionCodeFromProperties
+    getVersionNameFromProperties = this.&getVersionNameFromProperties
 }

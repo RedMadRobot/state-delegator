@@ -2,13 +2,13 @@ package com.redmadrobot.loading
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.redmadrobot.R
 import com.redmadrobot.StubStateData
 import com.redmadrobot.lib.sd.LoadingStateDelegate
 import kotlinx.android.synthetic.main.activity_loading.*
 
-class LoadingActivity  : AppCompatActivity() {
+class LoadingActivity : AppCompatActivity() {
 
     private var handler = Handler()
 
@@ -16,11 +16,13 @@ class LoadingActivity  : AppCompatActivity() {
 
     private val showLoadingTask = { screenState.showLoading() }
     private val showZeroScreenTask = { screenState.showStub() }
-    private val showZeroWithStubScreenTask = { screenState.showStub(StubStateData(
-            iconResId = R.mipmap.ic_launcher,
-            titleResId = R.string.loading_zero_title,
-            descriptionResId = R.string.loading_zero_description
-    )) }
+    private val showZeroWithStubScreenTask = {
+        screenState.showStub(StubStateData(
+                iconResId = R.mipmap.ic_launcher,
+                titleResId = R.string.loading_zero_title,
+                descriptionResId = R.string.loading_zero_description
+        ))
+    }
     private val showContentTask = { screenState.showContent() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
