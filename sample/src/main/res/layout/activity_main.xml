@@ -11,11 +11,16 @@
         android:id="@+id/button_open_loading_state_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open Loading activity" />
+        android:text="@string/main_open_loading_state_activity" />
     <Button
         android:id="@+id/button_open_screen_state_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open ScreenState activity" />
+        android:text="@string/main_open_screen_state_activity" />
+    <Button
+        android:id="@+id/button_open_action_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_open_action_activity" />
 
 </LinearLayout>

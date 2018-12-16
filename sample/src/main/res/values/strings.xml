@@ -2,4 +2,13 @@
     <string name="app_name">StateDelegatorSample</string>
     <string name="loading_zero_title">zero title</string>
     <string name="loading_zero_description">zero description</string>
+
+    <!-- Main -->
+    <string name="main_open_loading_state_activity">Open Loading Activity</string>
+    <string name="main_open_loading_activity">Open Loading Activity</string>
+    <string name="main_open_screen_state_activity">Open ScreenState Activity</string>
+    <string name="main_open_action_activity">Open Action Activity</string>
+
+    <!-- Action -->
+    <string name="action_submit_btn">Submit Action</string>
 </resources>
