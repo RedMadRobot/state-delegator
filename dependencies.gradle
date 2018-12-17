@@ -1,44 +1,63 @@
-ext {
-    // Android
-    androidCompileSdkVersion = 28
-    androidBuildToolsVersion = '28.0.3'
-
-    androidMinSdkVersion = 14
-    androidTargetSdkVersion = 28
-
-    // Google
-    supportLibraryVersion = '25.3.1'
-
-    // View
-    constraintLayoutVersion = '1.0.2'
-
-    // Test
-    jUnitVersion = '4.12'
-    roboelectric = '3.1.1'
-
-    // Sample Delegator
-    sampleDelegatorVersion = '1.5'
-
-    libDependencies = [
-            // Kotlin
-            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    ]
-
-    sampleDependencies = [
-            // Kotlin
-            kotlin            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-
-            // Android
-            appCompat         : "com.android.support:appcompat-v7:$supportLibraryVersion",
-            supportAnnotations: "com.android.support:support-annotations:$supportLibraryVersion",
-
-
-            // Library
-            sampleDelegator   : "com.redmadrobot:state-delegator:$sampleDelegatorVersion"
-    ]
-
-    testDependencies = [
-            junit   : "junit:junit:$jUnitVersion",
-            roboelectric   : "org.robolectric:robolectric:$roboelectric",
-    ]
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://jitpack.io' }
+    handler.maven { url 'https://maven.fabric.io/public' }
 }
+
+ext.addRepos = this.&addRepos
+
+// base
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.2"
+build_versions.compile_sdk = 28
+ext.build_versions = build_versions
+
+def versions = [:]
+ext.deps = [:]
+def deps = [:]
+
+def gradle = [:]
+versions.android_plugin = "3.2.0"
+versions.maven_plugin = "2.0"
+versions.bintray_plugin = "1.8.4"
+gradle.android_plugin = "com.android.tools.build:gradle:$versions.android_plugin"
+gradle.maven_plugin = "com.github.dcendents:android-maven-gradle-plugin:$versions.maven_plugin"
+gradle.bintray_plugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.bintray_plugin"
+deps.gradle = gradle
+
+def kotlin = [:]
+versions.kotlin = "1.2.71"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.kotlin = kotlin
+
+// support
+
+def support = [:]
+versions.androidx = "1.0.0"
+support.app_compat = "androidx.appcompat:appcompat:$versions.androidx"
+deps.support = support
+
+// ui
+
+def ui = [:]
+versions.constraint_layout = "2.0.0-alpha2"
+versions.lottie = "2.8.0"
+ui.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+ui.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.ui = ui
+
+// test
+
+def test = [:]
+versions.jUnitVersion = "4.12"
+versions.roboelectric = "3.1.1"
+test.junit="junit:junit:$versions.jUnitVersion"
+test.roboelectric="org.robolectric:robolectric:$versions.roboelectric"
+deps.test = test
+
+ext.deps = deps

@@ -1,12 +1,11 @@
 package com.redmadrobot.state
 
-import android.support.v4.content.ContextCompat
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.redmadrobot.lib.sd.base.ShowOnEnterGoneOnExitStrategy
 import com.redmadrobot.lib.sd.base.State
 
-class PrevStateDependingStrategy(private val sceneRoot: View)
-    : ShowOnEnterGoneOnExitStrategy<MyScreenState>() {
+class PrevStateDependingStrategy(private val sceneRoot: View) : ShowOnEnterGoneOnExitStrategy<MyScreenState>() {
 
     override fun onStateEnter(state: State<MyScreenState>, prevState: State<MyScreenState>?) {
         super.onStateEnter(state, prevState)

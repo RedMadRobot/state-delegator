@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".state.ScreenStateActivity" />
         <activity android:name=".loading.LoadingActivity" />
+        <activity android:name=".action.ActionActivity" />
     </application>
 
 </manifest>

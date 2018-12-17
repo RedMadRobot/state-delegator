@@ -1,7 +1,7 @@
 package com.redmadrobot
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.redmadrobot.lib.sd.StubState
 
 data class StubStateData(
@@ -14,4 +14,4 @@ data class StubStateData(
 
         @StringRes
         val descriptionResId: Int? = null
-): StubState
+) : StubState

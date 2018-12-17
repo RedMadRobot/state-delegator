@@ -1,20 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-
 android {
-    def mainConfig = rootProject.ext
-
-    compileSdkVersion mainConfig.androidCompileSdkVersion
-    buildToolsVersion mainConfig.androidBuildToolsVersion
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
 
-        minSdkVersion mainConfig.androidMinSdkVersion
-        targetSdkVersion mainConfig.androidTargetSdkVersion
-
-        versionCode mainConfig.versionCodeFromProperties
-        versionName mainConfig.versionNameFromProperties
+        versionCode getVersionCodeFromProperties()
+        versionName getVersionNameFromProperties()
     }
 
     buildTypes {
@@ -26,13 +22,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(
+            deps.kotlin.stdlib,
+    )
 
-    def deps = rootProject.ext.libDependencies
-    def testDeps = rootProject.ext.testDependencies
-
-    implementation deps.kotlin
-
-    testImplementation testDeps.junit
-    testImplementation testDeps.roboelectric
+    testImplementation(
+            deps.test.junit,
+            deps.test.roboelectric,
+    )
 }

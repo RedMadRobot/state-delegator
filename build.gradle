@@ -1,22 +1,17 @@
 buildscript {
-    ext.kotlin_version = '1.2.71'
-    repositories {
-        google()
-        jcenter()
-    }
+    apply from: "${rootProject.projectDir}/dependencies.gradle"
+    addRepos(repositories)
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath deps.gradle.android_plugin
+        classpath deps.gradle.maven_plugin
+        classpath deps.gradle.bintray_plugin
+        classpath deps.kotlin.plugin
     }
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
+    addRepos(repositories)
+
     apply from: "${rootProject.projectDir}/version.gradle"
     apply from: "${rootProject.projectDir}/dependencies.gradle"
     apply from: "${rootProject.projectDir}/gradle/publish.gradle"

@@ -3,19 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    def mainConfig = rootProject.ext
-
-    compileSdkVersion mainConfig.androidCompileSdkVersion
-    buildToolsVersion mainConfig.androidBuildToolsVersion
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "com.redmadrobot"
 
-        minSdkVersion mainConfig.androidMinSdkVersion
-        targetSdkVersion mainConfig.androidTargetSdkVersion
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
 
-        versionCode mainConfig.versionCodeFromProperties
-        versionName mainConfig.versionNameFromProperties
+        versionCode getVersionCodeFromProperties()
+        versionName getVersionNameFromProperties()
     }
 
     buildTypes {
@@ -26,22 +24,14 @@ android {
     }
 }
 
-repositories {
-    maven {
-        credentials {
-            username 'android-consumer'
-            password 'FBSLLD4qzMRrdvpQ'
-        }
-        url 'https://nexus.redmadrobot.com/repository/android/'
-    }
-}
-
 dependencies {
-    def deps = rootProject.ext.sampleDependencies
-    implementation project(':state-delegator')
+    implementation(
+            project(':state-delegator'),
 
-    implementation deps.kotlin
-    implementation deps.appCompat
+            deps.kotlin.stdlib,
+            deps.support.app_compat,
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+            deps.ui.constraint_layout,
+            deps.ui.lottie,
+    )
 }

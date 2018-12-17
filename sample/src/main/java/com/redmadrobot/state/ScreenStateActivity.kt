@@ -1,7 +1,7 @@
 package com.redmadrobot.state
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.redmadrobot.R
 import com.redmadrobot.lib.sd.base.State
 import com.redmadrobot.lib.sd.base.StateDelegate

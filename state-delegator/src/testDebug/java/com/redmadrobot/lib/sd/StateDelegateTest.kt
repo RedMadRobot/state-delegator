@@ -26,9 +26,9 @@ class StateDelegateTest : Assert() {
     }
 
     private val screenState = StateDelegate(
-            State(TestState.CONTENT, listOf(contentView)),
-            State(TestState.LOADING, listOf(loadingView)),
-            State(TestState.STUB, listOf(stubView))
+            State(TestState.CONTENT, contentView),
+            State(TestState.LOADING, loadingView),
+            State(TestState.STUB, stubView)
     )
 
     @Test

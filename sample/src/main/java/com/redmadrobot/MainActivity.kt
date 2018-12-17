@@ -2,9 +2,8 @@ package com.redmadrobot
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.support.v7.app.AppCompatActivity
-import com.redmadrobot.lib.sd.LoadingStateDelegate
+import androidx.appcompat.app.AppCompatActivity
+import com.redmadrobot.action.ActionActivity
 import com.redmadrobot.loading.LoadingActivity
 import com.redmadrobot.state.ScreenStateActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         }
         button_open_screen_state_activity.setOnClickListener {
             startActivity(Intent(this, ScreenStateActivity::class.java))
+        }
+        button_open_action_activity.setOnClickListener {
+            startActivity(Intent(this, ActionActivity::class.java))
         }
     }
 }
