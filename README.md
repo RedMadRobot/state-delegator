@@ -43,7 +43,7 @@ when (state) {
 }
 ```
 
-# Overview
+### Overview
 
 [Check documentation](https://redmadrobot.github.io/state-delegator/)
 
