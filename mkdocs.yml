@@ -1,4 +1,4 @@
-site_name: state-delegator
+site_name: 'State Delegator'
 
 repo_name: 'state-delegator'
 repo_url: 'https://github.com/RedMadRobot/state-delegator'
@@ -18,3 +18,7 @@ markdown_extensions:
 
 nav:
   - 'Overview': index.md
+  - 'LoadingStateDelegate': loading-state-delegate.md
+  - 'StateDelegate': state-delegate.md
+  - 'Download': download.md
+  - 'Source Code': source-code.md
