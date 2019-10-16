@@ -1,0 +1,24 @@
+site_name: 'State Delegator'
+
+repo_name: 'state-delegator'
+repo_url: 'https://github.com/RedMadRobot/state-delegator'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'green'
+
+extra_css:
+  - 'css/app.css'
+
+
+markdown_extensions:
+  - codehilite:
+      guess_lang: false
+
+nav:
+  - 'Overview': index.md
+  - 'LoadingStateDelegate': loading-state-delegate.md
+  - 'StateDelegate': state-delegate.md
+  - 'Download': download.md
+  - 'Source Code': source-code.md
