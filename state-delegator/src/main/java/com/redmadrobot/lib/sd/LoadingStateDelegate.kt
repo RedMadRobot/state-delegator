@@ -24,13 +24,17 @@ class LoadingStateDelegate : StateDelegate<LoadingStateDelegate.LoadingState> {
         this.stubView = convertToList(stubView)
     }
 
-    constructor(contentView: List<View>, loadingView: List<View>, stubView: List<View>) :
+    constructor(
+            contentView: List<View>? = null,
+            loadingView: List<View>? = null,
+            stubView: List<View>? = null
+    ) :
             super(
-                    State(LoadingState.CONTENT, contentView),
-                    State(LoadingState.LOADING, loadingView),
-                    State(LoadingState.STUB, stubView)
+                    State(LoadingState.CONTENT, contentView ?: listOf()),
+                    State(LoadingState.LOADING, loadingView ?: listOf()),
+                    State(LoadingState.STUB, stubView ?: listOf())
             ) {
-        this.stubView = stubView
+        this.stubView = stubView ?: listOf()
     }
 
     fun showContent() {
