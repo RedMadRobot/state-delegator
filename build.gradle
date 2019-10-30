@@ -14,5 +14,4 @@ allprojects {
 
     apply from: "${rootProject.projectDir}/version.gradle"
     apply from: "${rootProject.projectDir}/dependencies.gradle"
-    apply from: "${rootProject.projectDir}/gradle/publish.gradle"
 }
