@@ -13,7 +13,7 @@ following will add a dependency to the library:
 dependencies {
     ...
 
-    implementation "com.redmadrobot:state-delegator:1.6"
+    implementation "com.redmadrobot:state-delegator:1.7"
 }
 ```
 
