@@ -37,4 +37,4 @@ class LoadingFragment  : Fragment() {
 ...
 ```
 
-This can lead to errors. If you look at the [documentation](https://developer.android.com/guide/components/fragments#Creating), you will see that `onCreateView()` called again when the fragment returns to layout from the back stack. Which means state `screenState` will point out to the old view. Use `lateinit` and re-create `LoadingStateDelegate` every time in the component lifecycle methods.
+This can lead to errors. If you look at the [documentation](https://developer.android.com/guide/components/fragments#Creating), you will see that `onCreateView()` called again when the fragment returns to layout from the back stack. Which means `screenState` will point out to the old view. Use `lateinit` and re-create `LoadingStateDelegate` every time in the component lifecycle methods.
