@@ -10,7 +10,7 @@ class PrevStateDependingStrategy(private val sceneRoot: View) : ShowOnEnterGoneO
     override fun onStateEnter(state: State<MyScreenState>, prevState: State<MyScreenState>?) {
         super.onStateEnter(state, prevState)
         with(sceneRoot) {
-            when (prevState) {
+            when (prevState?.name) {
                 MyScreenState.ERROR -> setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_dark))
                 MyScreenState.LOADING -> setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_bright))
                 else -> setBackgroundColor(ContextCompat.getColor(context, android.R.color.white))
