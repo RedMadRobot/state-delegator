@@ -3,7 +3,8 @@ State Delegator
 
 ![Logo](logo/logo.png)
 
-[ ![Download](https://api.bintray.com/packages/redmadrobot-opensource/android/state-delegator/images/download.svg) ](https://bintray.com/redmadrobot-opensource/android/state-delegator/_latestVersion) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![Version](https://img.shields.io/maven-central/v/com.redmadrobot/state-delegator?style=flat-square)][mavenCentral]
+[![License](https://img.shields.io/github/license/RedMadRobot/state-delegator?style=flat-square)][license]
 
 State delegator is a collection of classes that helps you to manage a screen state and reduces boilerplate code.
 
@@ -51,11 +52,12 @@ when (state) {
 
 ### Download
 
-To get started using `state-delegator` is to add it as a gradle dependency. You need to make sure you have the JCenter repository included in the build.gradle file in the root of your project:
+To get started using **state-delegator** is to add it as a gradle dependency.
+You need to make sure you have the MavenCentral repository included in the `build.gradle` file in the root of your project:
 
 ```gradle
 repositories {
-    jcenter()
+    mavenCentral()
 }
 ```
 
@@ -95,3 +97,6 @@ And that's all! :-)
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
+[mavenCentral]: https://search.maven.org/artifact/com.redmadrobot/state-delegator
+[license]: LICENSE
